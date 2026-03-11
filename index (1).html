@@ -1,0 +1,2870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javier Morán Construcciones | Calafate, Santa Cruz</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <!-- Íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+  :root {
+    --stone: #2c2416;
+    --earth: #6b4f2a;
+    --sand: #c9a96e;
+    --ice: #d4eaf7;
+    --glacier: #7db8d4;
+    --sky: #1a3a4a;
+    --white: #f5f0e8;
+    --dark: #1a1208;
+    --accent: #e8a020;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--stone); }
+  ::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 3px; }
+
+  /* ─── HEADER ─── */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: linear-gradient(to bottom, rgba(26,18,8,0.97), rgba(26,18,8,0.85));
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,169,110,0.25);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+
+  .logo-area {
+    display: flex; align-items: center; gap: 14px;
+  }
+
+  .logo-circle {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: 2px solid var(--sand);
+    background: linear-gradient(135deg, var(--earth), var(--stone));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--sand);
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .logo-circle img {
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 50%;
+    display: none;
+  }
+
+  .logo-initials { font-size: 1.1rem; letter-spacing: 1px; }
+
+  .brand-text h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    color: var(--sand);
+    line-height: 1;
+  }
+
+  .brand-text p {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--glacier);
+    text-transform: uppercase;
+  }
+
+  nav { display: flex; gap: 0.3rem; align-items: center; }
+
+  nav button {
+    background: none; border: none;
+    color: var(--white); opacity: 0.7;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.5rem 0.9rem;
+    border-radius: 4px;
+    transition: all 0.3s;
+    font-weight: 600;
+  }
+
+  nav button:hover, nav button.active {
+    opacity: 1;
+    background: rgba(201,169,110,0.15);
+    color: var(--sand);
+  }
+
+  .contact-btn {
+    background: var(--earth) !important;
+    color: var(--white) !important;
+    opacity: 1 !important;
+    border: 1px solid var(--sand) !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  .contact-btn:hover {
+    background: var(--sand) !important;
+    color: var(--dark) !important;
+  }
+
+  .nav-divider {
+    width: 1px; height: 28px;
+    background: rgba(201,169,110,0.25);
+    margin: 0 0.4rem;
+  }
+
+  .nav-private-btn {
+    display: flex; align-items: center; gap: 6px;
+    opacity: 0.45 !important;
+    font-size: 0.72rem !important;
+  }
+
+  .nav-private-btn:hover { opacity: 0.9 !important; }
+
+  .nav-private-btn .lock-icon {
+    font-size: 0.65rem;
+    color: var(--sand);
+  }
+
+  /* ─── LOGIN MODAL ─── */
+  .login-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.82);
+    backdrop-filter: blur(10px);
+    z-index: 3000;
+    display: none;
+    align-items: center; justify-content: center;
+  }
+  .login-overlay.open { display: flex; }
+
+  .login-box {
+    background: linear-gradient(145deg, #2c2416, #1a1208);
+    border: 1px solid rgba(201,169,110,0.35);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    width: 100%; max-width: 380px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+    animation: fadeUp 0.4s ease;
+  }
+
+  .login-box .lock-big {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(201,169,110,0.12);
+    border: 2px solid rgba(201,169,110,0.3);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.2rem;
+    font-size: 1.6rem;
+    color: var(--sand);
+  }
+
+  .login-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
+    font-size: 1.6rem;
+    color: var(--sand);
+    margin-bottom: 0.3rem;
+  }
+
+  .login-box p {
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.45);
+    letter-spacing: 1px;
+    margin-bottom: 1.8rem;
+  }
+
+  .login-input-wrap {
+    position: relative; margin-bottom: 1rem;
+  }
+
+  .login-input-wrap input {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,169,110,0.3);
+    color: var(--white);
+    padding: 0.85rem 3rem 0.85rem 1rem;
+    border-radius: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+
+  .login-input-wrap input:focus {
+    outline: none;
+    border-color: var(--sand);
+    background: rgba(201,169,110,0.07);
+  }
+
+  .login-input-wrap input.error {
+    border-color: #ff6b6b;
+    animation: shake 0.4s ease;
+  }
+
+  .toggle-pw {
+    position: absolute; right: 12px; top: 50%;
+    transform: translateY(-50%);
+    background: none; border: none;
+    color: rgba(245,240,232,0.4);
+    cursor: pointer; font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .toggle-pw:hover { color: var(--sand); }
+
+  .login-error {
+    font-size: 0.75rem;
+    color: #ff6b6b;
+    margin-bottom: 1rem;
+    min-height: 18px;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-login {
+    width: 100%;
+    background: linear-gradient(135deg, var(--earth), #8b6535);
+    border: 1px solid var(--sand);
+    color: var(--white);
+    padding: 0.9rem;
+    border-radius: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 0.8rem;
+  }
+
+  .btn-login:hover {
+    background: linear-gradient(135deg, var(--sand), var(--earth));
+    color: var(--dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(201,169,110,0.3);
+  }
+
+  .btn-login-cancel {
+    background: none; border: none;
+    color: rgba(245,240,232,0.35);
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0.4rem;
+  }
+
+  .btn-login-cancel:hover { color: rgba(245,240,232,0.7); }
+
+  /* session indicator */
+  .session-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #25d366;
+    display: inline-block;
+    margin-right: 4px;
+    box-shadow: 0 0 6px #25d366;
+  }
+
+  .btn-logout {
+    background: none;
+    border: 1px solid rgba(255,100,100,0.25);
+    color: rgba(255,150,150,0.7);
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-logout:hover {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+    background: rgba(255,100,100,0.08);
+  }
+
+  @keyframes shake {
+    0%,100%{transform:translateX(0)}
+    20%{transform:translateX(-8px)}
+    40%{transform:translateX(8px)}
+    60%{transform:translateX(-5px)}
+    80%{transform:translateX(5px)}
+  }
+
+  /* ─── CONTACTO SECTION ─── */
+  #contacto { background: linear-gradient(135deg, #0d1f2d 0%, #1a2a1a 40%, #2c1a08 100%); }
+
+  .contacto-container {
+    max-width: 700px; margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2rem;
+  }
+
+  .contacto-card {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,110,0.22);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex; align-items: center; gap: 1.8rem;
+    transition: all 0.3s;
+    text-decoration: none; color: inherit;
+  }
+
+  .contacto-card:hover {
+    background: rgba(201,169,110,0.08);
+    border-color: rgba(201,169,110,0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .contacto-card .c-icon {
+    width: 58px; height: 58px; flex-shrink: 0;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  .c-icon.whatsapp { background: rgba(37,211,102,0.15); border: 2px solid rgba(37,211,102,0.4); color: #25d366; }
+  .c-icon.phone    { background: rgba(125,184,212,0.12); border: 2px solid rgba(125,184,212,0.35); color: var(--glacier); }
+  .c-icon.location { background: rgba(201,169,110,0.12); border: 2px solid rgba(201,169,110,0.3); color: var(--sand); }
+  .c-icon.zone     { background: rgba(107,79,42,0.2); border: 2px solid rgba(107,79,42,0.5); color: var(--sand); }
+
+  .contacto-card .c-text h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px; font-size: 1.1rem;
+    color: var(--sand); margin-bottom: 0.3rem;
+  }
+
+  .contacto-card .c-text p {
+    font-size: 1rem; color: var(--white); font-weight: 600;
+  }
+
+  .contacto-card .c-text span {
+    font-size: 0.75rem; color: rgba(245,240,232,0.45);
+    letter-spacing: 1px; display: block; margin-top: 0.2rem;
+  }
+
+  .contacto-hero {
+    text-align: center; padding-bottom: 1rem;
+  }
+
+  .contacto-hero h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem,5vw,3.5rem);
+    letter-spacing: 4px; color: var(--sand);
+  }
+
+  .contacto-hero p {
+    font-size: 0.85rem; color: rgba(245,240,232,0.45);
+    letter-spacing: 2px; text-transform: uppercase; margin-top: 0.4rem;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section { display: none; min-height: 100vh; padding-top: 72px; }
+  .section.active { display: block; }
+
+  /* ─── HERO ─── */
+  #hero {
+    background: linear-gradient(135deg, #0d1f2d 0%, #1a2a1a 40%, #2c1a08 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 30%, rgba(125,184,212,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(107,79,42,0.2) 0%, transparent 50%);
+  }
+
+  .hero-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: calc(100vh - 72px);
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,169,110,0.1);
+    border: 1px solid rgba(201,169,110,0.3);
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    letter-spacing: 6px;
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+
+  .hero-title span { color: var(--sand); display: block; }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--glacier);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-location {
+    display: flex; align-items: center; gap: 8px;
+    color: rgba(245,240,232,0.5);
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+
+  .hero-location i { color: var(--glacier); }
+
+  .hero-cards {
+    display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 150px;
+  }
+
+  .hero-card:hover {
+    background: rgba(201,169,110,0.12);
+    border-color: var(--sand);
+    transform: translateY(-4px);
+  }
+
+  .hero-card i {
+    font-size: 1.8rem;
+    color: var(--sand);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  .hero-card span {
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--glacier);
+    font-weight: 600;
+  }
+
+  .hero-whatsapp {
+    margin-top: 3rem;
+    display: flex; align-items: center; gap: 12px;
+    animation: fadeUp 0.8s 0.75s ease both;
+  }
+
+  .whatsapp-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25d366;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+  }
+
+  .whatsapp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(37,211,102,0.4);
+  }
+
+  /* ─── PAGE HEADERS ─── */
+  .page-header {
+    background: linear-gradient(to bottom, rgba(26,18,8,1), transparent);
+    padding: 4rem 3rem 2rem;
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+  }
+
+  .page-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 5px;
+    color: var(--sand);
+  }
+
+  .page-header p {
+    color: rgba(245,240,232,0.5);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  /* ─── PRESUPUESTOS ─── */
+  #presupuestos { background: linear-gradient(180deg, #1a1208 0%, #0f1a10 100%); }
+
+  .presupuesto-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+  }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-grid.full { grid-template-columns: 1fr; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .form-group label {
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sand);
+    font-weight: 600;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,169,110,0.25);
+    color: var(--white);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9rem;
+    transition: border-color 0.3s;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--sand);
+    background: rgba(201,169,110,0.07);
+  }
+
+  .form-group select option { background: #2c2416; }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+
+  .items-section {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .items-section h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
+    color: var(--glacier);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .item-row {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1.5fr 1fr 40px;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
+
+  .item-row input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,169,110,0.2);
+    color: var(--white);
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.85rem;
+    transition: border-color 0.3s;
+  }
+
+  .item-row input:focus {
+    outline: none;
+    border-color: var(--sand);
+  }
+
+  .item-row input[readonly] {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  .btn-remove {
+    background: rgba(220,50,50,0.2);
+    border: 1px solid rgba(220,50,50,0.4);
+    color: #ff6b6b;
+    cursor: pointer;
+    width: 36px; height: 36px;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .btn-remove:hover { background: rgba(220,50,50,0.4); }
+
+  .totals-box {
+    background: rgba(201,169,110,0.08);
+    border: 1px solid rgba(201,169,110,0.25);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    text-align: right;
+    margin-top: 1rem;
+  }
+
+  .totals-box .total-line {
+    display: flex; justify-content: flex-end; gap: 2rem;
+    padding: 0.3rem 0;
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.7);
+  }
+
+  .totals-box .total-line.main {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--sand);
+    border-top: 1px solid rgba(201,169,110,0.3);
+    margin-top: 0.3rem;
+    padding-top: 0.5rem;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--earth), #8b6535);
+    border: 1px solid var(--sand);
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--sand), var(--earth));
+    color: var(--dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201,169,110,0.3);
+  }
+
+  .btn-secondary {
+    background: rgba(125,184,212,0.1);
+    border: 1px solid var(--glacier);
+    color: var(--glacier);
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(125,184,212,0.2);
+    transform: translateY(-2px);
+  }
+
+  .btn-success {
+    background: rgba(37,211,102,0.15);
+    border: 1px solid #25d366;
+    color: #25d366;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-success:hover {
+    background: rgba(37,211,102,0.25);
+    transform: translateY(-2px);
+  }
+
+  .action-bar {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  /* Historial presupuestos */
+  .presupuestos-list {
+    margin-top: 2rem;
+  }
+
+  .presupuestos-list h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
+    color: var(--sand);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .presupuesto-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.8rem;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.3s;
+  }
+
+  .presupuesto-card:hover {
+    background: rgba(201,169,110,0.07);
+    border-color: rgba(201,169,110,0.4);
+  }
+
+  .presupuesto-card .info h4 {
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .presupuesto-card .info span {
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.5);
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  .presupuesto-card .amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--sand);
+    letter-spacing: 2px;
+  }
+
+  /* ─── BLOG ─── */
+  #blog { background: linear-gradient(180deg, #1a1208 0%, #0d1f15 100%); }
+
+  .blog-container { padding: 2rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
+
+  .blog-upload-area {
+    background: rgba(255,255,255,0.03);
+    border: 2px dashed rgba(201,169,110,0.3);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 2rem;
+  }
+
+  .blog-upload-area:hover {
+    border-color: var(--sand);
+    background: rgba(201,169,110,0.05);
+  }
+
+  .blog-upload-area i {
+    font-size: 3rem;
+    color: var(--sand);
+    margin-bottom: 1rem;
+  }
+
+  .blog-upload-area h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
+    color: var(--glacier);
+    font-size: 1.4rem;
+  }
+
+  .blog-upload-area p {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.4);
+    margin-top: 0.4rem;
+  }
+
+  #blogFileInput { display: none; }
+
+  .blog-form-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    max-width: 800px;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .blog-post {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .blog-post:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201,169,110,0.45);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  }
+
+  .blog-post-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .blog-post-img-placeholder {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, var(--stone), var(--earth));
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .blog-post-img-placeholder i {
+    font-size: 3rem;
+    color: rgba(201,169,110,0.4);
+  }
+
+  .blog-post-body { padding: 1.2rem; }
+
+  .blog-post-body .tag {
+    display: inline-block;
+    background: rgba(201,169,110,0.15);
+    border: 1px solid rgba(201,169,110,0.3);
+    color: var(--sand);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.2rem 0.7rem;
+    border-radius: 50px;
+    margin-bottom: 0.6rem;
+  }
+
+  .blog-post-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+
+  .blog-post-body p {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+
+  .blog-post-meta {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .blog-post-meta span {
+    font-size: 0.72rem;
+    color: rgba(245,240,232,0.35);
+    letter-spacing: 1px;
+  }
+
+  .btn-delete-post {
+    background: none; border: none;
+    color: rgba(255,100,100,0.5);
+    cursor: pointer; font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+
+  .btn-delete-post:hover { color: #ff6b6b; }
+
+  /* ─── AGENDA ─── */
+  #agenda { background: linear-gradient(180deg, #1a1208 0%, #0a1520 100%); }
+
+  .agenda-container { padding: 2rem 3rem 4rem; max-width: 1100px; margin: 0 auto; }
+
+  .agenda-layout { display: grid; grid-template-columns: 380px 1fr; gap: 2rem; margin-top: 1rem; }
+
+  .agenda-form-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 14px;
+    padding: 1.5rem;
+    height: fit-content;
+    position: sticky; top: 90px;
+  }
+
+  .agenda-form-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
+    color: var(--glacier);
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .client-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,110,0.18);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 1rem;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .client-card:hover {
+    background: rgba(201,169,110,0.08);
+    border-color: rgba(201,169,110,0.4);
+  }
+
+  .client-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--earth), var(--sky));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: var(--sand);
+    flex-shrink: 0;
+  }
+
+  .client-info h4 {
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .client-info span {
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.5);
+    display: flex; align-items: center; gap: 5px;
+  }
+
+  .client-info span i { font-size: 0.65rem; color: var(--glacier); }
+
+  .client-actions { margin-left: auto; display: flex; gap: 0.5rem; }
+
+  .btn-icon {
+    background: none; border: none;
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+  }
+
+  .btn-icon.edit {
+    color: var(--glacier);
+    border: 1px solid rgba(125,184,212,0.2);
+  }
+
+  .btn-icon.edit:hover {
+    background: rgba(125,184,212,0.15);
+  }
+
+  .btn-icon.delete {
+    color: rgba(255,100,100,0.6);
+    border: 1px solid rgba(255,100,100,0.2);
+  }
+
+  .btn-icon.delete:hover {
+    background: rgba(255,100,100,0.15);
+    color: #ff6b6b;
+  }
+
+  .search-bar {
+    display: flex; gap: 0.8rem; margin-bottom: 1.2rem;
+  }
+
+  .search-bar input {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,169,110,0.2);
+    color: var(--white);
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.85rem;
+  }
+
+  .search-bar input:focus {
+    outline: none;
+    border-color: var(--sand);
+  }
+
+  .clients-count {
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 1rem;
+  }
+
+  /* ─── TOAST ─── */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: linear-gradient(135deg, var(--earth), #5a3a15);
+    border: 1px solid var(--sand);
+    color: var(--white);
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 9999;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    display: flex; align-items: center; gap: 10px;
+    max-width: 320px;
+  }
+
+  .toast.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .toast i { color: var(--sand); font-size: 1.1rem; }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: linear-gradient(135deg, #2c2416, #1a1208);
+    border: 1px solid rgba(201,169,110,0.3);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 550px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
+    color: var(--sand);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-actions {
+    display: flex; gap: 0.8rem; justify-content: flex-end; margin-top: 1.5rem;
+  }
+
+  .btn-cancel {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(245,240,232,0.6);
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-cancel:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
+
+  /* ─── SEPARATOR ─── */
+  .section-sep {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,169,110,0.3), transparent);
+    margin: 2rem 0;
+  }
+
+  /* ─── FOOTER CONTACT BAR ─── */
+  .contact-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(26,18,8,0.95);
+    border-top: 1px solid rgba(201,169,110,0.2);
+    backdrop-filter: blur(8px);
+    padding: 0.75rem 2rem;
+    display: flex; align-items: center; justify-content: center; gap: 2rem;
+    z-index: 900;
+    font-size: 0.8rem;
+  }
+
+  .contact-bar a {
+    color: rgba(245,240,232,0.6);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 7px;
+    transition: color 0.3s;
+    letter-spacing: 0.5px;
+  }
+
+  .contact-bar a:hover { color: var(--sand); }
+  .contact-bar i { color: var(--sand); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { display: none; }
+    .form-grid { grid-template-columns: 1fr; }
+    .agenda-layout { grid-template-columns: 1fr; }
+    .blog-container, .agenda-container, .presupuesto-container { padding: 1.5rem 1rem 4rem; }
+    .page-header { padding: 3rem 1.5rem 1.5rem; }
+    .contact-bar { font-size: 0.7rem; gap: 1rem; }
+    .item-row { grid-template-columns: 2fr 1fr 1fr 1fr 35px; }
+    .blog-form-row { grid-template-columns: 1fr; }
+  }
+
+  /* IVA toggle */
+  .iva-toggle {
+    display: flex; align-items: center; gap: 10px;
+    margin: 0.5rem 0 1rem;
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.6);
+    cursor: pointer;
+  }
+
+  .toggle-switch {
+    width: 40px; height: 22px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 11px;
+    position: relative;
+    border: 1px solid rgba(201,169,110,0.3);
+    transition: background 0.3s;
+    cursor: pointer;
+  }
+
+  .toggle-switch.on { background: rgba(201,169,110,0.4); }
+
+  .toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 16px; height: 16px;
+    background: var(--white);
+    border-radius: 50%;
+    top: 2px; left: 2px;
+    transition: left 0.3s;
+  }
+
+  .toggle-switch.on::after { left: 20px; }
+
+  /* Print presupuesto */
+  .presupuesto-preview {
+    background: rgba(201,169,110,0.06);
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    display: none;
+  }
+
+  .presupuesto-preview.show { display: block; }
+
+  .btn-add-item {
+    background: none;
+    border: 1px dashed rgba(201,169,110,0.35);
+    color: var(--sand);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+  }
+
+  .btn-add-item:hover {
+    border-color: var(--sand);
+    background: rgba(201,169,110,0.08);
+  }
+
+  .estado-badge {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    border-radius: 50px;
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .estado-pendiente { background: rgba(232,160,32,0.2); color: #e8a020; border: 1px solid rgba(232,160,32,0.35); }
+  .estado-aprobado  { background: rgba(37,211,102,0.15); color: #25d366; border: 1px solid rgba(37,211,102,0.3); }
+  .estado-rechazado { background: rgba(220,50,50,0.15); color: #ff6b6b; border: 1px solid rgba(220,50,50,0.3); }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: rgba(245,240,232,0.25);
+  }
+
+  .empty-state i { font-size: 3rem; margin-bottom: 1rem; }
+  .empty-state p { font-size: 0.85rem; letter-spacing: 1px; }
+
+  .tab-bar {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+    margin-bottom: 2rem;
+  }
+
+  .tab-btn {
+    background: none; border: none;
+    color: rgba(245,240,232,0.45);
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+    margin-bottom: -1px;
+  }
+
+  .tab-btn:hover { color: var(--white); }
+  .tab-btn.active { color: var(--sand); border-bottom-color: var(--sand); }
+
+  /* ─── BANNER TRABAJOS DESTACADOS ─── */
+  .banner-destacados {
+    display: none;
+    position: fixed;
+    bottom: 42px; /* encima del contact-bar */
+    left: 0; right: 0;
+    z-index: 850;
+    background: rgba(26,18,8,0.96);
+    border-top: 1px solid rgba(201,169,110,0.3);
+    padding: 0 1.5rem;
+    height: 180px; /* doble de altura ~10cm */
+    align-items: center;
+    gap: 1.2rem;
+    overflow: hidden;
+  }
+
+  .banner-destacados.visible { display: flex; }
+
+  .banner-titulo {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--sand);
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+    opacity: 0.85;
+  }
+
+  .banner-track-wrap {
+    flex: 1;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .banner-track {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: bannerScroll 18s linear infinite;
+    will-change: transform;
+  }
+
+  .banner-track:hover { animation-play-state: paused; }
+
+  .banner-foto {
+    height: 144px;     /* doble de altura */
+    width: 256px;      /* doble de ancho */
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid rgba(201,169,110,0.25);
+    flex-shrink: 0;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .banner-foto:hover {
+    transform: scale(1.05);
+    border-color: var(--sand);
+  }
+
+  @keyframes bannerScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ajuste contact-bar cuando banner visible */
+  body.banner-on .contact-bar { bottom: 180px; }
+
+  /* ─── FOTOS DESTACADAS (zona privada) ─── */
+  #fotos { background: linear-gradient(180deg, #1a1208 0%, #0d1520 100%); }
+
+  .fotos-container { padding: 2rem 3rem 5rem; max-width: 800px; margin: 0 auto; }
+
+  .fotos-upload-area {
+    background: rgba(255,255,255,0.03);
+    border: 2px dashed rgba(201,169,110,0.3);
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 2rem;
+  }
+
+  .fotos-upload-area:hover {
+    border-color: var(--sand);
+    background: rgba(201,169,110,0.05);
+  }
+
+  .fotos-upload-area i { font-size: 2.5rem; color: var(--sand); margin-bottom: 0.8rem; display: block; }
+  .fotos-upload-area h3 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 3px; color: var(--glacier); font-size: 1.3rem; }
+  .fotos-upload-area p  { font-size: 0.78rem; color: rgba(245,240,232,0.35); margin-top: 0.3rem; }
+
+  .fotos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .foto-thumb {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(201,169,110,0.2);
+    aspect-ratio: 16/9;
+    background: var(--stone);
+  }
+
+  .foto-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+  }
+
+  .foto-thumb:hover img { transform: scale(1.06); }
+
+  .foto-thumb .foto-del {
+    position: absolute; top: 6px; right: 6px;
+    background: rgba(0,0,0,0.65);
+    border: 1px solid rgba(255,100,100,0.4);
+    color: #ff6b6b;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 0.75rem;
+    opacity: 0; transition: opacity 0.2s;
+  }
+
+  .foto-thumb:hover .foto-del { opacity: 1; }
+
+  .fotos-count-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(201,169,110,0.1);
+    border: 1px solid rgba(201,169,110,0.25);
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    color: var(--sand);
+    margin-bottom: 1.2rem;
+  }
+
+  .fotos-max-warn {
+    background: rgba(232,160,32,0.1);
+    border: 1px solid rgba(232,160,32,0.3);
+    color: #e8a020;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    display: none;
+  }
+
+  .fotos-max-warn.show { display: block; }
+  .export-dropdown { position: relative; display: inline-block; }
+
+  .export-dropdown .exp-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background: #2c2416;
+    border: 1px solid rgba(201,169,110,0.35);
+    border-radius: 10px;
+    min-width: 190px;
+    z-index: 500;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+  }
+
+  .export-dropdown:hover .exp-menu,
+  .export-dropdown.open .exp-menu { display: block; }
+
+  .exp-menu button {
+    display: flex; align-items: center; gap: 10px;
+    width: 100%; background: none; border: none;
+    color: var(--white); font-family: 'Raleway', sans-serif;
+    font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 0.75rem 1.2rem; cursor: pointer;
+    transition: background 0.2s;
+    text-align: left;
+  }
+
+  .exp-menu button:hover { background: rgba(201,169,110,0.12); }
+  .exp-menu button .ico-xl { color: #1d7044; font-size: 1rem; }
+  .exp-menu button .ico-pdf { color: #d93025; font-size: 1rem; }
+  .exp-menu .exp-sep { height: 1px; background: rgba(201,169,110,0.15); margin: 0; }
+
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-area">
+    <div class="logo-circle" id="logoCircle">
+      <img id="logoImg" src="" alt="Logo JMC">
+      <span class="logo-initials" id="logoInitials">JMC</span>
+    </div>
+    <div class="brand-text">
+      <h1>Javier Morán</h1>
+      <p>Construcciones · Calafate</p>
+    </div>
+  </div>
+  <nav>
+    <!-- PÚBLICO -->
+    <button class="active" onclick="showSection('hero')" id="nav-hero"><i class="fas fa-home"></i> Inicio</button>
+    <button class="contact-btn" onclick="showSection('contacto')" id="nav-contacto"><i class="fas fa-envelope"></i> Contacto</button>
+
+    <!-- DIVISOR -->
+    <div class="nav-divider"></div>
+
+    <!-- PRIVADO -->
+    <div id="nav-private-buttons" style="display:flex;gap:0.3rem;align-items:center">
+      <button class="nav-private-btn" onclick="requestPrivate('presupuestos')">
+        <i class="fas fa-lock lock-icon"></i> Zona Privada
+      </button>
+    </div>
+
+    <!-- SESSION ACTIVA -->
+    <div id="nav-session" style="display:none;align-items:center;gap:0.6rem">
+      <button onclick="showSection('fotos')" id="nav-fotos" style="background:rgba(201,169,110,0.12);border:1px solid rgba(201,169,110,0.3)"><i class="fas fa-star"></i> Fotos Destacadas</button>
+      <button class="btn-logout" onclick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Salir</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ═══════════ LOGIN MODAL ═══════════ -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-box">
+    <div class="lock-big"><i class="fas fa-lock"></i></div>
+    <h3>Zona Privada</h3>
+    <p>Ingresá la contraseña para continuar</p>
+    <div class="login-input-wrap">
+      <input type="password" id="loginPassword" placeholder="••••••••"
+        onkeydown="if(event.key==='Enter')doLogin()"
+        oninput="document.getElementById('loginErr').textContent=''">
+      <button class="toggle-pw" onclick="togglePwVis()" type="button" id="togglePwBtn">
+        <i class="fas fa-eye" id="togglePwIcon"></i>
+      </button>
+    </div>
+    <div class="login-error" id="loginErr"></div>
+    <button class="btn-login" onclick="doLogin()"><i class="fas fa-unlock-alt"></i> &nbsp;Ingresar</button>
+    <button class="btn-login-cancel" onclick="closeLogin()">Cancelar</button>
+  </div>
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero" class="section active">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="fas fa-map-marker-alt"></i>
+      Patagonia · Santa Cruz · El Calafate
+    </div>
+    <h1 class="hero-title">
+      Javier Morán
+      <span>Construcciones</span>
+    </h1>
+    <p class="hero-subtitle">Calidad que perdura — en el fin del mundo</p>
+    <div class="hero-location">
+      <i class="fas fa-snowflake"></i>
+      El Calafate, Provincia de Santa Cruz, Argentina
+    </div>
+    <div class="hero-cards">
+      <div class="hero-card" onclick="showSection('contacto')">
+        <i class="fas fa-envelope"></i>
+        <span>Contacto</span>
+      </div>
+      <div class="hero-card" onclick="requestPrivate('presupuestos')" style="opacity:0.6;border-style:dashed">
+        <i class="fas fa-lock" style="font-size:1rem;margin-bottom:0.2rem"></i>
+        <i class="fas fa-file-invoice-dollar"></i>
+        <span>Zona Privada</span>
+      </div>
+    </div>
+    <div class="hero-whatsapp">
+      <a class="whatsapp-btn" href="https://wa.me/5492966542820" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        +54 9 2966 54-2820
+      </a>
+    </div>
+
+    <!-- Logo upload hint (solo visible en sesión privada) -->
+    <p id="logoUploadHint" style="margin-top:2rem;font-size:0.72rem;color:rgba(245,240,232,0.3);letter-spacing:1.5px;cursor:pointer;display:none" onclick="document.getElementById('logoUploadInput').click()">
+      <i class="fas fa-camera"></i> Cargá tu logo desde WhatsApp
+    </p>
+    <input type="file" id="logoUploadInput" accept="image/*" style="display:none" onchange="uploadLogo(this)">
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACTO ═══════════════ -->
+<section id="contacto" class="section">
+  <div class="hero-bg" style="position:absolute;inset:0;pointer-events:none"></div>
+  <div class="hero-pattern" style="position:absolute;inset:0;pointer-events:none"></div>
+  <div class="contacto-container" style="position:relative;z-index:1">
+    <div class="contacto-hero">
+      <h2>Contacto</h2>
+      <p>Zona de cobertura · Patagonia Argentina</p>
+    </div>
+
+    <a class="contacto-card" href="https://wa.me/5492966542820" target="_blank">
+      <div class="c-icon whatsapp"><i class="fab fa-whatsapp"></i></div>
+      <div class="c-text">
+        <h3>WhatsApp</h3>
+        <p>+54 9 2966 54-2820</p>
+        <span>Escribí directo por WhatsApp</span>
+      </div>
+      <i class="fas fa-chevron-right" style="margin-left:auto;color:rgba(245,240,232,0.2);font-size:0.8rem"></i>
+    </a>
+
+    <a class="contacto-card" href="tel:+5492966542820">
+      <div class="c-icon phone"><i class="fas fa-phone"></i></div>
+      <div class="c-text">
+        <h3>Teléfono</h3>
+        <p>+54 9 2966 54-2820</p>
+        <span>Llamadas y mensajes</span>
+      </div>
+      <i class="fas fa-chevron-right" style="margin-left:auto;color:rgba(245,240,232,0.2);font-size:0.8rem"></i>
+    </a>
+
+    <div class="contacto-card" style="cursor:default">
+      <div class="c-icon location"><i class="fas fa-map-marker-alt"></i></div>
+      <div class="c-text">
+        <h3>Ubicación</h3>
+        <p>El Calafate, Santa Cruz</p>
+        <span>Patagonia Argentina</span>
+      </div>
+    </div>
+
+    <div class="contacto-card" style="cursor:default">
+      <div class="c-icon zone"><i class="fas fa-map"></i></div>
+      <div class="c-text">
+        <h3>Zona de Trabajo</h3>
+        <p>Provincia de Santa Cruz</p>
+        <span>El Calafate · Patagonia Argentina</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRESUPUESTOS ═══════════════ -->
+<section id="presupuestos" class="section">
+  <div class="page-header">
+    <h2>Presupuestos</h2>
+    <p>Generá, guardá y exportá presupuestos a Excel</p>
+  </div>
+
+  <div class="presupuesto-container">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('nuevo')">Nuevo Presupuesto</button>
+      <button class="tab-btn" onclick="switchTab('historial')">Historial</button>
+    </div>
+
+    <!-- Tab: Nuevo -->
+    <div class="tab-panel active" id="tab-nuevo">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Cliente</label>
+          <input type="text" id="p-cliente" placeholder="Nombre del cliente">
+        </div>
+        <div class="form-group">
+          <label>Fecha</label>
+          <input type="date" id="p-fecha">
+        </div>
+        <div class="form-group">
+          <label>Obra / Descripción del trabajo</label>
+          <input type="text" id="p-obra" placeholder="Ej: Construcción galería, pintura interior...">
+        </div>
+        <div class="form-group">
+          <label>Dirección de la obra</label>
+          <input type="text" id="p-direccion" placeholder="Dirección">
+        </div>
+      </div>
+
+      <div class="items-section">
+        <h3>Ítems del Presupuesto</h3>
+        <div style="display:grid;grid-template-columns:3fr 1fr 1.5fr 1fr 40px;gap:0.5rem;margin-bottom:0.5rem">
+          <span style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--sand)">Descripción</span>
+          <span style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--sand)">Cant.</span>
+          <span style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--sand)">Precio Unit.</span>
+          <span style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--sand)">Subtotal</span>
+          <span></span>
+        </div>
+        <div id="items-container"></div>
+        <button class="btn-add-item" onclick="addItem()"><i class="fas fa-plus"></i> Agregar ítem</button>
+
+        <div class="totals-box" style="margin-top:1.5rem">
+          <div class="total-line"><span>Subtotal</span><span id="t-subtotal">$0,00</span></div>
+          <div style="display:flex;align-items:center;justify-content:flex-end;gap:1rem;padding:0.3rem 0">
+            <span style="font-size:0.78rem;color:rgba(245,240,232,0.5)">Incluir IVA (21%)</span>
+            <div class="toggle-switch" id="ivaToggle" onclick="toggleIva()"></div>
+          </div>
+          <div class="total-line" id="iva-row" style="display:none"><span>IVA (21%)</span><span id="t-iva">$0,00</span></div>
+          <div class="total-line main"><span>TOTAL</span><span id="t-total">$0,00</span></div>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1rem">
+        <label>Notas / Condiciones</label>
+        <textarea id="p-notas" placeholder="Condiciones de pago, materiales incluidos, tiempo de obra..."></textarea>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Estado</label>
+        <select id="p-estado">
+          <option value="pendiente">Pendiente</option>
+          <option value="aprobado">Aprobado</option>
+          <option value="rechazado">Rechazado</option>
+        </select>
+      </div>
+
+      <div class="action-bar">
+        <button class="btn-primary" onclick="guardarPresupuesto()"><i class="fas fa-save"></i> Guardar</button>
+        <div class="export-dropdown">
+          <button class="btn-secondary"><i class="fas fa-file-export"></i> Exportar <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:4px"></i></button>
+          <div class="exp-menu">
+            <button onclick="exportarPresupuestoExcel()"><i class="fas fa-file-excel ico-xl"></i> Excel (.xlsx)</button>
+            <div class="exp-sep"></div>
+            <button onclick="exportarPresupuestoPDF()"><i class="fas fa-file-pdf ico-pdf"></i> PDF</button>
+          </div>
+        </div>
+        <button class="btn-success" onclick="limpiarPresupuesto()"><i class="fas fa-plus-circle"></i> Nuevo</button>
+      </div>
+    </div>
+
+    <!-- Tab: Historial -->
+    <div class="tab-panel" id="tab-historial">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:1rem">
+        <div class="clients-count" id="pres-count">0 presupuestos guardados</div>
+        <div class="export-dropdown">
+          <button class="btn-secondary"><i class="fas fa-file-export"></i> Exportar Todo <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:4px"></i></button>
+          <div class="exp-menu">
+            <button onclick="exportarTodosPresupuestosExcel()"><i class="fas fa-file-excel ico-xl"></i> Excel (.xlsx)</button>
+            <div class="exp-sep"></div>
+            <button onclick="exportarTodosPresupuestosPDF()"><i class="fas fa-file-pdf ico-pdf"></i> PDF</button>
+          </div>
+        </div>
+      </div>
+      <div id="presupuestos-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ BLOG ═══════════════ -->
+<section id="blog" class="section">
+  <div class="page-header">
+    <h2>Trabajos Destacados</h2>
+    <p>Galería de obras realizadas en la Patagonia</p>
+  </div>
+
+  <div class="blog-container">
+    <div class="blog-upload-area" onclick="document.getElementById('blogFileInput').click()">
+      <i class="fas fa-cloud-upload-alt"></i>
+      <h3>Subir Fotos de Trabajos</h3>
+      <p>Hacé clic para seleccionar imágenes de tu galería</p>
+    </div>
+    <input type="file" id="blogFileInput" accept="image/*" multiple onchange="handleBlogUpload(this)">
+
+    <div class="blog-form-row" id="blogNewForm" style="display:none">
+      <div class="form-group">
+        <label>Título del trabajo</label>
+        <input type="text" id="b-titulo" placeholder="Ej: Refacción integral, Local comercial...">
+      </div>
+      <div class="form-group">
+        <label>Categoría</label>
+        <select id="b-categoria">
+          <option>Construcción</option>
+          <option>Refacción</option>
+          <option>Pintura</option>
+          <option>Techado</option>
+          <option>Carpintería</option>
+          <option>Instalaciones</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Año</label>
+        <input type="number" id="b-anio" placeholder="2024" min="2000" max="2099">
+      </div>
+      <div class="form-group full">
+        <label>Descripción breve</label>
+        <input type="text" id="b-descripcion" placeholder="Breve descripción del trabajo realizado...">
+      </div>
+      <div style="grid-column:1/-1;display:flex;gap:0.8rem;margin-top:0.3rem">
+        <button class="btn-primary" onclick="confirmarBlogPost()"><i class="fas fa-check"></i> Publicar</button>
+        <button class="btn-cancel" onclick="cancelarBlogPost()">Cancelar</button>
+      </div>
+    </div>
+
+    <div class="blog-grid" id="blog-grid"></div>
+    <div class="empty-state" id="blog-empty">
+      <i class="fas fa-images"></i>
+      <p>Aún no hay trabajos publicados.<br>¡Subí tus primeras fotos!</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ AGENDA ═══════════════ -->
+<section id="agenda" class="section">
+  <div class="page-header">
+    <h2>Agenda de Clientes</h2>
+    <p>Registrá y gestioná todos tus contactos</p>
+  </div>
+
+  <div class="agenda-container">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem">
+      <div class="export-dropdown">
+        <button class="btn-secondary"><i class="fas fa-file-export"></i> Exportar Agenda <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:4px"></i></button>
+        <div class="exp-menu">
+          <button onclick="exportarAgendaExcel()"><i class="fas fa-file-excel ico-xl"></i> Excel (.xlsx)</button>
+          <div class="exp-sep"></div>
+          <button onclick="exportarAgendaPDF()"><i class="fas fa-file-pdf ico-pdf"></i> PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="agenda-layout">
+      <!-- Formulario -->
+      <div class="agenda-form-card">
+        <h3 id="agendaFormTitle">Nuevo Cliente</h3>
+        <input type="hidden" id="c-id">
+        <div class="form-group" style="margin-bottom:0.8rem">
+          <label>Nombre completo</label>
+          <input type="text" id="c-nombre" placeholder="Nombre y apellido">
+        </div>
+        <div class="form-group" style="margin-bottom:0.8rem">
+          <label>Teléfono</label>
+          <input type="text" id="c-tel" placeholder="+54 9 ...">
+        </div>
+        <div class="form-group" style="margin-bottom:0.8rem">
+          <label>Email</label>
+          <input type="email" id="c-email" placeholder="correo@ejemplo.com">
+        </div>
+        <div class="form-group" style="margin-bottom:0.8rem">
+          <label>Dirección</label>
+          <input type="text" id="c-direccion" placeholder="Dirección del cliente">
+        </div>
+        <div class="form-group" style="margin-bottom:0.8rem">
+          <label>Tipo de obra</label>
+          <select id="c-tipoobra">
+            <option value="">— Seleccionar —</option>
+            <option>Construcción nueva</option>
+            <option>Refacción</option>
+            <option>Pintura</option>
+            <option>Techado</option>
+            <option>Carpintería</option>
+            <option>Instalaciones</option>
+            <option>Consulta / Presupuesto</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:1.2rem">
+          <label>Notas</label>
+          <textarea id="c-notas" placeholder="Observaciones, notas adicionales..." style="min-height:70px"></textarea>
+        </div>
+        <div style="display:flex;gap:0.7rem;flex-wrap:wrap">
+          <button class="btn-primary" onclick="guardarCliente()"><i class="fas fa-user-plus"></i> Guardar</button>
+          <button class="btn-cancel" onclick="limpiarFormCliente()">Limpiar</button>
+        </div>
+      </div>
+
+      <!-- Lista clientes -->
+      <div>
+        <div class="search-bar">
+          <input type="text" id="buscarCliente" placeholder="🔍  Buscar cliente..." oninput="renderClientes()">
+        </div>
+        <div class="clients-count" id="clientes-count">0 clientes registrados</div>
+        <div id="clientes-list"></div>
+        <div class="empty-state" id="clientes-empty">
+          <i class="fas fa-address-book"></i>
+          <p>No hay clientes registrados aún.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOTOS DESTACADAS (privado) ═══════════════ -->
+<section id="fotos" class="section">
+  <div class="page-header">
+    <h2>Fotos Destacadas</h2>
+    <p>Hasta 5 fotos · Se muestran en el banner de la página principal</p>
+  </div>
+  <div class="fotos-container">
+    <div class="fotos-max-warn" id="fotosMaxWarn">
+      <i class="fas fa-exclamation-triangle"></i> Límite alcanzado — máximo 5 fotos. Eliminá una para agregar otra.
+    </div>
+    <div class="fotos-upload-area" id="fotosUploadArea" onclick="document.getElementById('fotosFileInput').click()">
+      <i class="fas fa-images"></i>
+      <h3>Subir Fotos Destacadas</h3>
+      <p>Se mostrarán en el banner de la página principal (máx. 5)</p>
+    </div>
+    <input type="file" id="fotosFileInput" accept="image/*" multiple style="display:none" onchange="handleFotosUpload(this)">
+    <div class="fotos-count-badge" id="fotosCountBadge"><i class="fas fa-image"></i> 0 / 5 fotos</div>
+    <div class="fotos-grid" id="fotosGrid"></div>
+    <div class="empty-state" id="fotosEmpty">
+      <i class="fas fa-star"></i>
+      <p>No hay fotos destacadas aún.<br>Subí hasta 5 fotos para el banner.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ BANNER TRABAJOS DESTACADOS ═══════════════ -->
+<div class="banner-destacados" id="bannerDestacados">
+  <div class="banner-titulo">Trabajos Destacados</div>
+  <div class="banner-track-wrap">
+    <div class="banner-track" id="bannerTrack"></div>
+  </div>
+</div>
+
+<!-- CONTACT BAR -->
+<div class="contact-bar">
+  <a href="tel:+5492966542820"><i class="fas fa-phone"></i> +54 9 2966 54-2820</a>
+  <a href="https://wa.me/5492966542820" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  <a onclick="showSection('contacto')" style="cursor:pointer"><i class="fas fa-map-marker-alt"></i> El Calafate, Santa Cruz</a>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
+
+<!-- MODAL CLIENTE -->
+<div class="modal-overlay" id="modalCliente">
+  <div class="modal">
+    <h3>Detalle del Cliente</h3>
+    <div id="modalClienteContent"></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('modalCliente')">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Librerías externas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.6.0/jspdf.plugin.autotable.min.js"></script>
+<!-- Lógica de la aplicación -->
+<script>
+// ─── DATA STORAGE ───
+let presupuestos = JSON.parse(localStorage.getItem('jmc_presupuestos') || '[]');
+let clientes     = JSON.parse(localStorage.getItem('jmc_clientes')     || '[]');
+let blogPosts    = JSON.parse(localStorage.getItem('jmc_blog')         || '[]');
+let ivaOn        = false;
+let items        = [];
+let pendingImages = [];
+let editingClientId = null;
+let editingPresId   = null;
+
+// ─── AUTH ───
+const PRIVATE_PASS = 'Jvm3712'; // ← Contraseña
+let sesionActiva = false;
+let pendingSection = null;
+
+function requestPrivate(section) {
+  if (sesionActiva) { showSection(section); return; }
+  pendingSection = section;
+  document.getElementById('loginPassword').value = '';
+  document.getElementById('loginErr').textContent = '';
+  document.getElementById('loginOverlay').classList.add('open');
+  setTimeout(() => document.getElementById('loginPassword').focus(), 100);
+}
+
+function doLogin() {
+  const pw = document.getElementById('loginPassword').value;
+  if (pw === PRIVATE_PASS) {
+    sesionActiva = true;
+    document.getElementById('loginOverlay').classList.remove('open');
+    actualizarNavSesion();
+    if (pendingSection) { showSection(pendingSection); pendingSection = null; }
+    document.getElementById('logoUploadHint').style.display = 'block';
+    toast('Sesión iniciada correctamente');
+  } else {
+    const inp = document.getElementById('loginPassword');
+    inp.classList.add('error');
+    document.getElementById('loginErr').textContent = 'Contraseña incorrecta. Intentá de nuevo.';
+    setTimeout(() => inp.classList.remove('error'), 500);
+    inp.value = '';
+    inp.focus();
+  }
+}
+
+function closeLogin() {
+  document.getElementById('loginOverlay').classList.remove('open');
+  pendingSection = null;
+}
+
+function cerrarSesion() {
+  sesionActiva = false;
+  actualizarNavSesion();
+  showSection('hero');
+  document.getElementById('logoUploadHint').style.display = 'none';
+  toast('Sesión cerrada');
+}
+
+function togglePwVis() {
+  const inp = document.getElementById('loginPassword');
+  const ico = document.getElementById('togglePwIcon');
+  if (inp.type === 'password') {
+    inp.type = 'text';
+    ico.className = 'fas fa-eye-slash';
+  } else {
+    inp.type = 'password';
+    ico.className = 'fas fa-eye';
+  }
+}
+
+function actualizarNavSesion() {
+  const privateButtons = document.getElementById('nav-private-buttons');
+  const sessionButtons = document.getElementById('nav-session');
+  if (sesionActiva) {
+    privateButtons.style.display = 'none';
+    sessionButtons.style.display = 'flex';
+  } else {
+    privateButtons.style.display = 'flex';
+    sessionButtons.style.display = 'none';
+  }
+}
+
+// ─── NAVIGATION ───
+const PUBLIC_SECTIONS  = ['hero','blog','contacto'];
+const PRIVATE_SECTIONS = ['presupuestos','agenda','fotos'];
+
+function showSection(id) {
+  // Guard privado
+  if (PRIVATE_SECTIONS.includes(id) && !sesionActiva) {
+    requestPrivate(id); return;
+  }
+
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  // Actualizar nav activo
+  const navMap = { hero:'nav-hero', contacto:'nav-contacto' };
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  if (navMap[id]) {
+    const btn = document.getElementById(navMap[id]);
+    if (btn) btn.classList.add('active');
+  }
+
+  if (id === 'presupuestos') { renderPresupuestos(); if (!items.length) addItem(); }
+  if (id === 'agenda')       { renderClientes(); }
+  if (id === 'blog')         { renderBlog(); }
+  if (id === 'fotos')        { renderFotos(); }
+  const fd = document.getElementById('p-fecha');
+  if (fd && !fd.value) fd.value = new Date().toISOString().split('T')[0];
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+  if (name === 'historial') renderPresupuestos();
+}
+
+// ─── TOAST ───
+function toast(msg, type='ok') {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.style.borderColor = type==='ok' ? 'var(--sand)' : '#ff6b6b';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ─── LOGO UPLOAD ───
+function uploadLogo(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = document.getElementById('logoImg');
+    img.src = e.target.result;
+    img.style.display = 'block';
+    document.getElementById('logoInitials').style.display = 'none';
+    localStorage.setItem('jmc_logo', e.target.result);
+    toast('¡Logo actualizado!');
+  };
+  reader.readAsDataURL(file);
+}
+
+// Load saved logo
+(function() {
+  const saved = localStorage.getItem('jmc_logo');
+  if (saved) {
+    const img = document.getElementById('logoImg');
+    img.src = saved; img.style.display = 'block';
+    document.getElementById('logoInitials').style.display = 'none';
+  }
+})();
+
+// ─── IVA ───
+function toggleIva() {
+  ivaOn = !ivaOn;
+  document.getElementById('ivaToggle').classList.toggle('on', ivaOn);
+  document.getElementById('iva-row').style.display = ivaOn ? 'flex' : 'none';
+  calcTotals();
+}
+
+// ─── ITEMS ───
+function addItem(desc='', cant='', precio='') {
+  const id = Date.now() + Math.random();
+  items.push({ id, desc, cant, precio });
+  renderItems();
+}
+
+function removeItem(id) {
+  items = items.filter(i => i.id !== id);
+  renderItems();
+  calcTotals();
+}
+
+function renderItems() {
+  const c = document.getElementById('items-container');
+  c.innerHTML = '';
+  items.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'item-row';
+    row.innerHTML = `
+      <input type="text" placeholder="Descripción del trabajo/material" value="${item.desc}"
+        oninput="updateItem(${item.id},'desc',this.value)">
+      <input type="number" placeholder="1" value="${item.cant}" min="0"
+        oninput="updateItem(${item.id},'cant',this.value);calcTotals()">
+      <input type="number" placeholder="0.00" value="${item.precio}" min="0" step="0.01"
+        oninput="updateItem(${item.id},'precio',this.value);calcTotals()">
+      <input type="text" readonly value="${fmtMoney((item.cant||0)*(item.precio||0))}" id="sub-${item.id}">
+      <button class="btn-remove" onclick="removeItem(${item.id})"><i class="fas fa-times"></i></button>
+    `;
+    c.appendChild(row);
+  });
+}
+
+function updateItem(id, field, val) {
+  const item = items.find(i => i.id === id);
+  if (item) {
+    item[field] = val;
+    const sub = document.getElementById('sub-' + id);
+    if (sub) sub.value = fmtMoney((item.cant||0)*(item.precio||0));
+  }
+}
+
+function calcTotals() {
+  const sub = items.reduce((s, i) => s + (parseFloat(i.cant)||0)*(parseFloat(i.precio)||0), 0);
+  const iva = ivaOn ? sub * 0.21 : 0;
+  const total = sub + iva;
+  document.getElementById('t-subtotal').textContent = fmtMoney(sub);
+  document.getElementById('t-iva').textContent = fmtMoney(iva);
+  document.getElementById('t-total').textContent = fmtMoney(total);
+}
+
+function fmtMoney(n) {
+  return '$ ' + (parseFloat(n)||0).toLocaleString('es-AR', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+// ─── GUARDAR PRESUPUESTO ───
+function guardarPresupuesto() {
+  const cliente = document.getElementById('p-cliente').value.trim();
+  const fecha   = document.getElementById('p-fecha').value;
+  const obra    = document.getElementById('p-obra').value.trim();
+  if (!cliente) { toast('Ingresá el nombre del cliente','err'); return; }
+  if (!obra)    { toast('Ingresá la descripción de la obra','err'); return; }
+
+  const sub   = items.reduce((s,i) => s + (parseFloat(i.cant)||0)*(parseFloat(i.precio)||0), 0);
+  const iva   = ivaOn ? sub*0.21 : 0;
+  const total = sub + iva;
+
+  const pres = {
+    id:        editingPresId || Date.now(),
+    cliente,  fecha, obra,
+    direccion: document.getElementById('p-direccion').value,
+    notas:     document.getElementById('p-notas').value,
+    estado:    document.getElementById('p-estado').value,
+    items:     JSON.parse(JSON.stringify(items)),
+    ivaOn, sub, iva, total,
+    creado:    new Date().toLocaleDateString('es-AR')
+  };
+
+  if (editingPresId) {
+    const idx = presupuestos.findIndex(p => p.id === editingPresId);
+    if (idx >= 0) presupuestos[idx] = pres;
+    editingPresId = null;
+  } else {
+    presupuestos.unshift(pres);
+  }
+
+  localStorage.setItem('jmc_presupuestos', JSON.stringify(presupuestos));
+  toast('Presupuesto guardado correctamente');
+  limpiarPresupuesto();
+  switchTabDirect('historial');
+}
+
+function switchTabDirect(name) {
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i===(name==='nuevo'?0:1)));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  if (name === 'historial') renderPresupuestos();
+}
+
+function limpiarPresupuesto() {
+  document.getElementById('p-cliente').value = '';
+  document.getElementById('p-obra').value = '';
+  document.getElementById('p-direccion').value = '';
+  document.getElementById('p-notas').value = '';
+  document.getElementById('p-estado').value = 'pendiente';
+  document.getElementById('p-fecha').value = new Date().toISOString().split('T')[0];
+  items = [];
+  editingPresId = null;
+  addItem();
+  calcTotals();
+}
+
+// ─── RENDER PRESUPUESTOS ───
+function renderPresupuestos() {
+  const list = document.getElementById('presupuestos-list');
+  const count = document.getElementById('pres-count');
+  count.textContent = presupuestos.length + ' presupuesto' + (presupuestos.length!==1?'s':'') + ' guardado' + (presupuestos.length!==1?'s':'');
+
+  if (!presupuestos.length) {
+    list.innerHTML = '<div class="empty-state"><i class="fas fa-file-invoice-dollar"></i><p>No hay presupuestos aún.<br>Creá el primero.</p></div>';
+    return;
+  }
+
+  list.innerHTML = presupuestos.map(p => `
+    <div class="presupuesto-card">
+      <div class="info">
+        <h4>${p.cliente}</h4>
+        <span>${p.obra} · ${p.fecha||''} · <span class="estado-badge estado-${p.estado}">${p.estado}</span></span>
+      </div>
+      <div style="text-align:right">
+        <div class="amount">${fmtMoney(p.total)}</div>
+        <div style="display:flex;gap:0.5rem;margin-top:0.5rem;justify-content:flex-end">
+          <button class="btn-icon edit" title="Editar" onclick="editarPresupuesto(${p.id})"><i class="fas fa-edit"></i></button>
+          <div class="export-dropdown" style="position:relative">
+            <button class="btn-icon" title="Exportar" style="color:var(--sand);border:1px solid rgba(201,169,110,0.25)"><i class="fas fa-file-export"></i></button>
+            <div class="exp-menu" style="right:0;top:calc(100% + 4px)">
+              <button onclick="exportarPresupuestoExcelById(${p.id})"><i class="fas fa-file-excel ico-xl"></i> Excel</button>
+              <div class="exp-sep"></div>
+              <button onclick="exportarPresupuestoPDFById(${p.id})"><i class="fas fa-file-pdf ico-pdf"></i> PDF</button>
+            </div>
+          </div>
+          <button class="btn-icon delete" title="Eliminar" onclick="eliminarPresupuesto(${p.id})"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function editarPresupuesto(id) {
+  const p = presupuestos.find(x => x.id === id);
+  if (!p) return;
+  editingPresId = id;
+  document.getElementById('p-cliente').value   = p.cliente;
+  document.getElementById('p-fecha').value     = p.fecha;
+  document.getElementById('p-obra').value      = p.obra;
+  document.getElementById('p-direccion').value = p.direccion||'';
+  document.getElementById('p-notas').value     = p.notas||'';
+  document.getElementById('p-estado').value    = p.estado;
+  items = JSON.parse(JSON.stringify(p.items));
+  ivaOn = p.ivaOn;
+  document.getElementById('ivaToggle').classList.toggle('on', ivaOn);
+  document.getElementById('iva-row').style.display = ivaOn ? 'flex' : 'none';
+  renderItems(); calcTotals();
+  switchTabDirect('nuevo');
+}
+
+function eliminarPresupuesto(id) {
+  if (!confirm('¿Eliminar este presupuesto?')) return;
+  presupuestos = presupuestos.filter(p => p.id !== id);
+  localStorage.setItem('jmc_presupuestos', JSON.stringify(presupuestos));
+  renderPresupuestos();
+  toast('Presupuesto eliminado');
+}
+
+// ─── EXPORT EXCEL PRESUPUESTO ───
+function exportarPresupuestoExcel() {
+  const cliente = document.getElementById('p-cliente').value.trim() || 'Cliente';
+  const obra    = document.getElementById('p-obra').value.trim()    || 'Obra';
+  const fecha   = document.getElementById('p-fecha').value          || new Date().toISOString().split('T')[0];
+
+  const rows = [
+    ['JAVIER MORÁN CONSTRUCCIONES'],
+    ['El Calafate, Santa Cruz, Patagonia Argentina'],
+    ['Tel: +54 9 2966 54-2820'],
+    [''],
+    ['PRESUPUESTO'],
+    ['Cliente:', cliente],
+    ['Obra:', obra],
+    ['Dirección:', document.getElementById('p-direccion').value||''],
+    ['Fecha:', fecha],
+    [''],
+    ['Descripción', 'Cantidad', 'Precio Unitario', 'Subtotal'],
+    ...items.map(i => [i.desc, parseFloat(i.cant)||0, parseFloat(i.precio)||0, (parseFloat(i.cant)||0)*(parseFloat(i.precio)||0)]),
+    [''],
+    ['', '', 'SUBTOTAL:', items.reduce((s,i)=>s+(parseFloat(i.cant)||0)*(parseFloat(i.precio)||0),0)],
+    ...(ivaOn ? [['','','IVA (21%):', items.reduce((s,i)=>s+(parseFloat(i.cant)||0)*(parseFloat(i.precio)||0),0)*0.21]] : []),
+    ['','','TOTAL:', items.reduce((s,i)=>s+(parseFloat(i.cant)||0)*(parseFloat(i.precio)||0),0) * (ivaOn?1.21:1)],
+    [''],
+    ['Notas:', document.getElementById('p-notas').value||''],
+    ['Estado:', document.getElementById('p-estado').value],
+  ];
+
+  const ws = XLSX.utils.aoa_to_sheet(rows);
+  ws['!cols'] = [{wch:40},{wch:12},{wch:18},{wch:16}];
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Presupuesto');
+  XLSX.writeFile(wb, `Presupuesto_${cliente.replace(/\s/g,'_')}_${fecha}.xlsx`);
+  toast('Excel generado correctamente');
+}
+
+function exportarPresupuestoExcelById(id) {
+  const p = presupuestos.find(x => x.id === id);
+  if (!p) return;
+  const rows = [
+    ['JAVIER MORÁN CONSTRUCCIONES'],
+    ['El Calafate, Santa Cruz, Patagonia Argentina'],
+    ['Tel: +54 9 2966 54-2820'],
+    [''],
+    ['PRESUPUESTO'],
+    ['Cliente:', p.cliente],
+    ['Obra:', p.obra],
+    ['Dirección:', p.direccion||''],
+    ['Fecha:', p.fecha||''],
+    [''],
+    ['Descripción', 'Cantidad', 'Precio Unitario', 'Subtotal'],
+    ...p.items.map(i => [i.desc, parseFloat(i.cant)||0, parseFloat(i.precio)||0, (parseFloat(i.cant)||0)*(parseFloat(i.precio)||0)]),
+    [''],
+    ['', '', 'SUBTOTAL:', p.sub],
+    ...(p.ivaOn ? [['','','IVA (21%):', p.iva]] : []),
+    ['','','TOTAL:', p.total],
+    [''],
+    ['Notas:', p.notas||''],
+    ['Estado:', p.estado],
+  ];
+  const ws = XLSX.utils.aoa_to_sheet(rows);
+  ws['!cols'] = [{wch:40},{wch:12},{wch:18},{wch:16}];
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Presupuesto');
+  XLSX.writeFile(wb, `Presupuesto_${p.cliente.replace(/\s/g,'_')}_${p.fecha||'sin-fecha'}.xlsx`);
+  toast('Excel generado');
+}
+
+function exportarTodosPresupuestosExcel() {
+  if (!presupuestos.length) { toast('No hay presupuestos para exportar','err'); return; }
+  const rows = [
+    ['JAVIER MORÁN CONSTRUCCIONES — HISTORIAL DE PRESUPUESTOS'],
+    [''],
+    ['#','Cliente','Obra','Fecha','Total','IVA Incluido','Estado'],
+    ...presupuestos.map((p,i) => [i+1, p.cliente, p.obra, p.fecha||'', p.total, p.ivaOn?'Sí':'No', p.estado])
+  ];
+  const ws = XLSX.utils.aoa_to_sheet(rows);
+  ws['!cols'] = [{wch:5},{wch:25},{wch:35},{wch:14},{wch:16},{wch:14},{wch:12}];
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Presupuestos');
+  XLSX.writeFile(wb, `JMC_Presupuestos_${new Date().toISOString().split('T')[0]}.xlsx`);
+  toast('Historial exportado a Excel');
+}
+
+// ─── BLOG ───
+let pendingBlob = null;
+
+function handleBlogUpload(input) {
+  const files = Array.from(input.files);
+  if (!files.length) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    pendingBlob = e.target.result;
+    document.getElementById('blogNewForm').style.display = 'grid';
+    document.getElementById('b-titulo').focus();
+    document.getElementById('b-anio').value = new Date().getFullYear();
+  };
+  reader.readAsDataURL(files[0]);
+  input.value = '';
+}
+
+function confirmarBlogPost() {
+  const titulo = document.getElementById('b-titulo').value.trim();
+  if (!titulo) { toast('Ingresá un título','err'); return; }
+  const post = {
+    id:       Date.now(),
+    titulo,
+    categoria: document.getElementById('b-categoria').value,
+    anio:     document.getElementById('b-anio').value || new Date().getFullYear(),
+    desc:     document.getElementById('b-descripcion').value,
+    img:      pendingBlob,
+    fecha:    new Date().toLocaleDateString('es-AR')
+  };
+  blogPosts.unshift(post);
+  localStorage.setItem('jmc_blog', JSON.stringify(blogPosts));
+  pendingBlob = null;
+  document.getElementById('blogNewForm').style.display = 'none';
+  ['b-titulo','b-descripcion'].forEach(id => document.getElementById(id).value = '');
+  renderBlog();
+  toast('¡Trabajo publicado!');
+}
+
+function cancelarBlogPost() {
+  pendingBlob = null;
+  document.getElementById('blogNewForm').style.display = 'none';
+}
+
+function renderBlog() {
+  const grid  = document.getElementById('blog-grid');
+  const empty = document.getElementById('blog-empty');
+  empty.style.display = blogPosts.length ? 'none' : 'block';
+  grid.innerHTML = blogPosts.map(p => `
+    <div class="blog-post">
+      ${p.img
+        ? `<img class="blog-post-img" src="${p.img}" alt="${p.titulo}">`
+        : `<div class="blog-post-img-placeholder"><i class="fas fa-hard-hat"></i></div>`
+      }
+      <div class="blog-post-body">
+        <div class="tag">${p.categoria}</div>
+        <h3>${p.titulo}</h3>
+        ${p.desc ? `<p>${p.desc}</p>` : ''}
+        <div class="blog-post-meta">
+          <span><i class="fas fa-calendar-alt" style="margin-right:4px"></i>${p.anio} · ${p.fecha}</span>
+          <button class="btn-delete-post" onclick="eliminarPost(${p.id})" title="Eliminar">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function eliminarPost(id) {
+  if (!confirm('¿Eliminar esta publicación?')) return;
+  blogPosts = blogPosts.filter(p => p.id !== id);
+  localStorage.setItem('jmc_blog', JSON.stringify(blogPosts));
+  renderBlog();
+  toast('Publicación eliminada');
+}
+
+// ─── AGENDA / CLIENTES ───
+function guardarCliente() {
+  const nombre = document.getElementById('c-nombre').value.trim();
+  if (!nombre) { toast('Ingresá el nombre del cliente','err'); return; }
+
+  const cli = {
+    id:       editingClientId || Date.now(),
+    nombre,
+    tel:      document.getElementById('c-tel').value.trim(),
+    email:    document.getElementById('c-email').value.trim(),
+    direccion: document.getElementById('c-direccion').value.trim(),
+    tipoobra: document.getElementById('c-tipoobra').value,
+    notas:    document.getElementById('c-notas').value.trim(),
+    fecha:    new Date().toLocaleDateString('es-AR')
+  };
+
+  if (editingClientId) {
+    const idx = clientes.findIndex(c => c.id === editingClientId);
+    if (idx >= 0) clientes[idx] = cli;
+    editingClientId = null;
+    document.getElementById('agendaFormTitle').textContent = 'Nuevo Cliente';
+  } else {
+    clientes.unshift(cli);
+  }
+
+  localStorage.setItem('jmc_clientes', JSON.stringify(clientes));
+  limpiarFormCliente();
+  renderClientes();
+  toast('Cliente guardado correctamente');
+}
+
+function limpiarFormCliente() {
+  ['c-nombre','c-tel','c-email','c-direccion','c-notas'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('c-tipoobra').value = '';
+  editingClientId = null;
+  document.getElementById('agendaFormTitle').textContent = 'Nuevo Cliente';
+}
+
+function renderClientes() {
+  const q     = (document.getElementById('buscarCliente')?.value || '').toLowerCase();
+  const list  = document.getElementById('clientes-list');
+  const empty = document.getElementById('clientes-empty');
+  const count = document.getElementById('clientes-count');
+
+  const filtered = clientes.filter(c =>
+    c.nombre.toLowerCase().includes(q) ||
+    (c.tel||'').includes(q) ||
+    (c.tipoobra||'').toLowerCase().includes(q)
+  );
+
+  count.textContent = filtered.length + ' cliente' + (filtered.length!==1?'s':'') + ' registrado' + (filtered.length!==1?'s':'');
+  empty.style.display = filtered.length ? 'none' : 'block';
+
+  list.innerHTML = filtered.map(c => {
+    const init = c.nombre.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+    return `
+      <div class="client-card">
+        <div class="client-avatar">${init}</div>
+        <div class="client-info">
+          <h4>${c.nombre}</h4>
+          <span>${c.tel ? `<i class="fas fa-phone"></i> ${c.tel}` : ''}</span>
+          ${c.tipoobra ? `<span style="margin-top:2px"><i class="fas fa-hard-hat"></i> ${c.tipoobra}</span>` : ''}
+        </div>
+        <div class="client-actions">
+          <button class="btn-icon edit" title="Editar" onclick="editarCliente(${c.id})"><i class="fas fa-edit"></i></button>
+          <button class="btn-icon" title="WhatsApp" style="color:#25d366;border:1px solid rgba(37,211,102,0.2)"
+            onclick="window.open('https://wa.me/${'+54'}'+c.tel.replace(/[^0-9]/g,''),'_blank')">
+            <i class="fab fa-whatsapp"></i>
+          </button>
+          <button class="btn-icon delete" title="Eliminar" onclick="eliminarCliente(${c.id})"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function editarCliente(id) {
+  const c = clientes.find(x => x.id === id);
+  if (!c) return;
+  editingClientId = id;
+  document.getElementById('c-nombre').value    = c.nombre;
+  document.getElementById('c-tel').value       = c.tel||'';
+  document.getElementById('c-email').value     = c.email||'';
+  document.getElementById('c-direccion').value = c.direccion||'';
+  document.getElementById('c-tipoobra').value  = c.tipoobra||'';
+  document.getElementById('c-notas').value     = c.notas||'';
+  document.getElementById('agendaFormTitle').textContent = 'Editar Cliente';
+  window.scrollTo({ top: 72, behavior: 'smooth' });
+}
+
+function eliminarCliente(id) {
+  if (!confirm('¿Eliminar este cliente?')) return;
+  clientes = clientes.filter(c => c.id !== id);
+  localStorage.setItem('jmc_clientes', JSON.stringify(clientes));
+  renderClientes();
+  toast('Cliente eliminado');
+}
+
+// ─── EXPORT AGENDA EXCEL ───
+function exportarAgendaExcel() {
+  if (!clientes.length) { toast('No hay clientes para exportar','err'); return; }
+  const rows = [
+    ['JAVIER MORÁN CONSTRUCCIONES — AGENDA DE CLIENTES'],
+    ['Generado el: ' + new Date().toLocaleDateString('es-AR')],
+    [''],
+    ['#','Nombre','Teléfono','Email','Dirección','Tipo de Obra','Notas','Registrado'],
+    ...clientes.map((c,i) => [i+1, c.nombre, c.tel||'', c.email||'', c.direccion||'', c.tipoobra||'', c.notas||'', c.fecha||''])
+  ];
+  const ws = XLSX.utils.aoa_to_sheet(rows);
+  ws['!cols'] = [{wch:5},{wch:28},{wch:18},{wch:28},{wch:30},{wch:22},{wch:35},{wch:14}];
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Clientes');
+  XLSX.writeFile(wb, `JMC_Agenda_Clientes_${new Date().toISOString().split('T')[0]}.xlsx`);
+  toast('Agenda exportada a Excel');
+}
+
+// ─── PDF HELPERS ───
+function pdfHeader(doc) {
+  // Dark header bar
+  doc.setFillColor(44, 36, 22);
+  doc.rect(0, 0, 210, 28, 'F');
+  doc.setFontSize(18);
+  doc.setTextColor(201, 169, 110);
+  doc.setFont('helvetica', 'bold');
+  doc.text('JAVIER MORAN CONSTRUCCIONES', 14, 12);
+  doc.setFontSize(8);
+  doc.setTextColor(125, 184, 212);
+  doc.setFont('helvetica', 'normal');
+  doc.text('El Calafate, Santa Cruz, Patagonia Argentina   |   +54 9 2966 54-2820', 14, 20);
+  doc.setTextColor(40, 40, 40);
+}
+
+function pdfFooter(doc) {
+  const pg = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= pg; i++) {
+    doc.setPage(i);
+    doc.setFontSize(7);
+    doc.setTextColor(150);
+    doc.text('Javier Moran Construcciones · El Calafate · +54 9 2966 54-2820', 14, 290);
+    doc.text('Pagina ' + i + ' de ' + pg, 196, 290, { align: 'right' });
+  }
+}
+
+// ─── PDF PRESUPUESTO ACTUAL ───
+function exportarPresupuestoPDF() {
+  const cliente = document.getElementById('p-cliente').value.trim() || 'Cliente';
+  const obra    = document.getElementById('p-obra').value.trim()    || 'Obra';
+  const fecha   = document.getElementById('p-fecha').value          || new Date().toISOString().split('T')[0];
+  const dir     = document.getElementById('p-direccion').value      || '';
+  const notas   = document.getElementById('p-notas').value          || '';
+  const estado  = document.getElementById('p-estado').value         || 'pendiente';
+  const sub     = items.reduce((s,i)=>s+(parseFloat(i.cant)||0)*(parseFloat(i.precio)||0),0);
+  const iva     = ivaOn ? sub*0.21 : 0;
+  const total   = sub + iva;
+  _generarPresupuestoPDF({ cliente, obra, fecha, dir, notas, estado, items: JSON.parse(JSON.stringify(items)), ivaOn, sub, iva, total });
+}
+
+function exportarPresupuestoPDFById(id) {
+  const p = presupuestos.find(x => x.id === id);
+  if (!p) return;
+  _generarPresupuestoPDF({ cliente:p.cliente, obra:p.obra, fecha:p.fecha, dir:p.direccion||'', notas:p.notas||'', estado:p.estado, items:p.items, ivaOn:p.ivaOn, sub:p.sub, iva:p.iva, total:p.total });
+}
+
+function _generarPresupuestoPDF(p) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  pdfHeader(doc);
+
+  // Info block
+  doc.setFontSize(11);
+  doc.setTextColor(40,40,40);
+  doc.setFont('helvetica','bold');
+  doc.text('PRESUPUESTO', 14, 38);
+  doc.setFont('helvetica','normal');
+  doc.setFontSize(9);
+
+  const info = [
+    ['Cliente:', p.cliente],
+    ['Obra / Trabajo:', p.obra],
+    ['Direccion:', p.dir],
+    ['Fecha:', p.fecha],
+    ['Estado:', p.estado.toUpperCase()],
+  ];
+  let y = 45;
+  info.forEach(([k,v]) => {
+    doc.setFont('helvetica','bold'); doc.setTextColor(107,79,42);
+    doc.text(k, 14, y);
+    doc.setFont('helvetica','normal'); doc.setTextColor(40,40,40);
+    doc.text(v||'', 52, y);
+    y += 7;
+  });
+
+  // Separator
+  doc.setDrawColor(201,169,110);
+  doc.setLineWidth(0.4);
+  doc.line(14, y+2, 196, y+2);
+  y += 8;
+
+  // Items table
+  doc.autoTable({
+    startY: y,
+    head: [['Descripcion', 'Cantidad', 'Precio Unit.', 'Subtotal']],
+    body: p.items.map(i => [
+      i.desc||'',
+      (parseFloat(i.cant)||0).toString(),
+      '$ ' + (parseFloat(i.precio)||0).toLocaleString('es-AR',{minimumFractionDigits:2}),
+      '$ ' + ((parseFloat(i.cant)||0)*(parseFloat(i.precio)||0)).toLocaleString('es-AR',{minimumFractionDigits:2})
+    ]),
+    headStyles: { fillColor:[44,36,22], textColor:[201,169,110], fontStyle:'bold', fontSize:9 },
+    bodyStyles: { fontSize:9, textColor:[40,40,40] },
+    alternateRowStyles: { fillColor:[248,244,235] },
+    columnStyles: { 0:{cellWidth:85}, 1:{cellWidth:22,halign:'center'}, 2:{cellWidth:40,halign:'right'}, 3:{cellWidth:36,halign:'right'} },
+    styles: { cellPadding:3 },
+    margin: { left:14, right:14 },
+    theme: 'grid',
+  });
+
+  let ty = doc.lastAutoTable.finalY + 6;
+
+  // Totals
+  const totals = [['SUBTOTAL', '$ ' + p.sub.toLocaleString('es-AR',{minimumFractionDigits:2})]];
+  if (p.ivaOn) totals.push(['IVA (21%)', '$ ' + p.iva.toLocaleString('es-AR',{minimumFractionDigits:2})]);
+  totals.push(['TOTAL', '$ ' + p.total.toLocaleString('es-AR',{minimumFractionDigits:2})]);
+
+  doc.autoTable({
+    startY: ty,
+    body: totals,
+    bodyStyles: { fontSize:9 },
+    columnStyles: { 0:{cellWidth:40,fontStyle:'bold',textColor:[107,79,42],halign:'right'}, 1:{cellWidth:36,halign:'right'} },
+    margin: { left:120, right:14 },
+    theme: 'plain',
+    didDrawRow: (data) => {
+      if (data.row.index === totals.length-1) {
+        doc.setFillColor(44,36,22);
+        doc.rect(data.row.cells[0].x-1, data.row.cells[0].y-1, 79, data.row.height+2, 'F');
+        doc.setTextColor(201,169,110);
+        doc.setFont('helvetica','bold');
+        doc.setFontSize(11);
+        doc.text('TOTAL', data.row.cells[0].x+38, data.row.cells[0].y+data.row.height/2+1.5, {align:'right'});
+        doc.text('$ ' + p.total.toLocaleString('es-AR',{minimumFractionDigits:2}), data.row.cells[1].x+35, data.row.cells[0].y+data.row.height/2+1.5, {align:'right'});
+      }
+    }
+  });
+
+  // Notas
+  if (p.notas) {
+    let ny = doc.lastAutoTable.finalY + 10;
+    doc.setFontSize(9); doc.setFont('helvetica','bold'); doc.setTextColor(107,79,42);
+    doc.text('Notas / Condiciones:', 14, ny);
+    doc.setFont('helvetica','normal'); doc.setTextColor(60,60,60);
+    const lines = doc.splitTextToSize(p.notas, 180);
+    doc.text(lines, 14, ny+6);
+  }
+
+  pdfFooter(doc);
+  doc.save('Presupuesto_' + p.cliente.replace(/\s/g,'_') + '_' + p.fecha + '.pdf');
+  toast('PDF generado correctamente');
+}
+
+// ─── PDF TODOS LOS PRESUPUESTOS ───
+function exportarTodosPresupuestosPDF() {
+  if (!presupuestos.length) { toast('No hay presupuestos para exportar','err'); return; }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  pdfHeader(doc);
+
+  doc.setFontSize(13); doc.setFont('helvetica','bold'); doc.setTextColor(44,36,22);
+  doc.text('HISTORIAL DE PRESUPUESTOS', 14, 38);
+  doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(100);
+  doc.text('Generado: ' + new Date().toLocaleDateString('es-AR'), 14, 44);
+
+  doc.autoTable({
+    startY: 50,
+    head: [['#','Cliente','Obra','Fecha','Total','IVA','Estado']],
+    body: presupuestos.map((p,i) => [
+      i+1, p.cliente, p.obra, p.fecha||'',
+      '$ ' + (p.total||0).toLocaleString('es-AR',{minimumFractionDigits:2}),
+      p.ivaOn?'Si':'No', p.estado
+    ]),
+    headStyles: { fillColor:[44,36,22], textColor:[201,169,110], fontStyle:'bold', fontSize:8 },
+    bodyStyles: { fontSize:8, textColor:[40,40,40] },
+    alternateRowStyles: { fillColor:[248,244,235] },
+    columnStyles: { 0:{cellWidth:8}, 1:{cellWidth:32}, 2:{cellWidth:50}, 3:{cellWidth:22}, 4:{cellWidth:30,halign:'right'}, 5:{cellWidth:12,halign:'center'}, 6:{cellWidth:22,halign:'center'} },
+    theme:'grid',
+    margin:{left:14,right:14}
+  });
+
+  pdfFooter(doc);
+  doc.save('JMC_Presupuestos_' + new Date().toISOString().split('T')[0] + '.pdf');
+  toast('PDF historial generado');
+}
+
+// ─── PDF AGENDA ───
+function exportarAgendaPDF() {
+  if (!clientes.length) { toast('No hay clientes para exportar','err'); return; }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('landscape');
+  // Header landscape
+  doc.setFillColor(44,36,22);
+  doc.rect(0,0,297,22,'F');
+  doc.setFontSize(16); doc.setTextColor(201,169,110); doc.setFont('helvetica','bold');
+  doc.text('JAVIER MORAN CONSTRUCCIONES - AGENDA DE CLIENTES', 14, 10);
+  doc.setFontSize(7); doc.setTextColor(125,184,212); doc.setFont('helvetica','normal');
+  doc.text('El Calafate, Santa Cruz, Patagonia Argentina   |   +54 9 2966 54-2820   |   Generado: ' + new Date().toLocaleDateString('es-AR'), 14, 17);
+
+  doc.autoTable({
+    startY: 28,
+    head: [['#','Nombre Completo','Telefono','Email','Direccion','Tipo de Obra','Notas','Registrado']],
+    body: clientes.map((c,i) => [i+1, c.nombre, c.tel||'', c.email||'', c.direccion||'', c.tipoobra||'', c.notas||'', c.fecha||'']),
+    headStyles: { fillColor:[44,36,22], textColor:[201,169,110], fontStyle:'bold', fontSize:8 },
+    bodyStyles: { fontSize:8, textColor:[40,40,40] },
+    alternateRowStyles: { fillColor:[248,244,235] },
+    columnStyles: { 0:{cellWidth:8}, 1:{cellWidth:38}, 2:{cellWidth:28}, 3:{cellWidth:45}, 4:{cellWidth:38}, 5:{cellWidth:30}, 6:{cellWidth:50}, 7:{cellWidth:20} },
+    theme:'grid',
+    margin:{left:14,right:14}
+  });
+
+  // Footer
+  const pg = doc.internal.getNumberOfPages();
+  for (let i=1;i<=pg;i++) {
+    doc.setPage(i);
+    doc.setFontSize(7); doc.setTextColor(150);
+    doc.text('Javier Moran Construcciones · El Calafate · +54 9 2966 54-2820', 14, 205);
+    doc.text('Pagina '+i+' de '+pg, 283, 205, {align:'right'});
+  }
+
+  doc.save('JMC_Agenda_Clientes_' + new Date().toISOString().split('T')[0] + '.pdf');
+  toast('PDF agenda generado');
+}
+
+// ─── FOTOS DESTACADAS ───
+let fotosDestacadas = JSON.parse(localStorage.getItem('jmc_fotos') || '[]');
+const MAX_FOTOS = 5;
+
+function handleFotosUpload(input) {
+  const files = Array.from(input.files);
+  if (!files.length) return;
+  const restantes = MAX_FOTOS - fotosDestacadas.length;
+  if (restantes <= 0) { toast('Límite de 5 fotos alcanzado','err'); input.value=''; return; }
+  const toLoad = files.slice(0, restantes);
+  let loaded = 0;
+  toLoad.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      fotosDestacadas.push({ id: Date.now() + Math.random(), src: e.target.result });
+      loaded++;
+      if (loaded === toLoad.length) {
+        guardarFotos();
+        renderFotos();
+        actualizarBanner();
+        toast(loaded + ' foto' + (loaded>1?'s':'') + ' agregada' + (loaded>1?'s':''));
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value = '';
+}
+
+function guardarFotos() {
+  localStorage.setItem('jmc_fotos', JSON.stringify(fotosDestacadas));
+}
+
+function eliminarFoto(id) {
+  fotosDestacadas = fotosDestacadas.filter(f => f.id !== id);
+  guardarFotos();
+  renderFotos();
+  actualizarBanner();
+  toast('Foto eliminada');
+}
+
+function renderFotos() {
+  const grid    = document.getElementById('fotosGrid');
+  const empty   = document.getElementById('fotosEmpty');
+  const badge   = document.getElementById('fotosCountBadge');
+  const warn    = document.getElementById('fotosMaxWarn');
+  const area    = document.getElementById('fotosUploadArea');
+  const count   = fotosDestacadas.length;
+
+  badge.innerHTML = `<i class="fas fa-image"></i> ${count} / ${MAX_FOTOS} fotos`;
+  warn.classList.toggle('show', count >= MAX_FOTOS);
+  area.style.opacity = count >= MAX_FOTOS ? '0.4' : '1';
+  area.style.pointerEvents = count >= MAX_FOTOS ? 'none' : 'auto';
+  empty.style.display = count ? 'none' : 'block';
+
+  grid.innerHTML = fotosDestacadas.map(f => `
+    <div class="foto-thumb">
+      <img src="${f.src}" alt="Trabajo destacado">
+      <button class="foto-del" onclick="eliminarFoto(${f.id})" title="Eliminar">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  `).join('');
+}
+
+function actualizarBanner() {
+  const banner = document.getElementById('bannerDestacados');
+  const track  = document.getElementById('bannerTrack');
+
+  if (!fotosDestacadas.length) {
+    banner.classList.remove('visible');
+    document.body.classList.remove('banner-on');
+    return;
+  }
+
+  // Duplicar fotos para loop infinito suave
+  const imgs = [...fotosDestacadas, ...fotosDestacadas];
+  track.innerHTML = imgs.map(f =>
+    `<img class="banner-foto" src="${f.src}" alt="Trabajo destacado">`
+  ).join('');
+
+  // Ajustar velocidad según cantidad
+  const duracion = fotosDestacadas.length * 5;
+  track.style.animationDuration = duracion + 's';
+
+  banner.classList.add('visible');
+  document.body.classList.add('banner-on');
+}
+
+// ─── MODAL ───
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+// ─── INIT ───
+(function init() {
+  const fd = document.getElementById('p-fecha');
+  if (fd) fd.value = new Date().toISOString().split('T')[0];
+  addItem();
+  actualizarBanner(); // mostrar banner si hay fotos guardadas
+})();
+
+</script>
+</body>
+</html>
